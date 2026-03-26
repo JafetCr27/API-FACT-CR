@@ -10,7 +10,7 @@ Integración Hacienda
 
 Roadmap recomendado (paso a paso)
 Fase 1 (MVP)
- Endpoint factura
+    Endpoint factura
  XML básico
  Firma
  Envío sandbox
