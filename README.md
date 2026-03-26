@@ -8,6 +8,25 @@ ORM: Prisma
 Firma XML
 Integración Hacienda
 
+Roadmap recomendado (paso a paso)
+Fase 1 (MVP)
+ Endpoint factura
+ XML básico
+ Firma
+ Envío sandbox
+Fase 2
+ Multiempresa
+ Base de datos
+ API keys
+Fase 3
+ Notas crédito/débito
+ Consulta estado
+ Reintentos
+Fase 4 (PRO)
+ Colas
+ Logs
+ Dashboard
+
 Estructura
 
 src/
