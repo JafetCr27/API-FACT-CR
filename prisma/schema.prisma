@@ -1,0 +1,27 @@
+model Company {
+  id                String   @id @default(uuid())
+  name              String
+  identification    String   @unique
+  apiKey            String   @unique
+  haciendaUser      String
+  haciendaPassword  String
+  certPath          String
+  certPassword      String
+  environment       String   // sandbox | production
+  createdAt         DateTime @default(now())
+
+  documents         Document[]
+}
+
+model Document {
+  id        String   @id @default(uuid())
+  companyId String
+  type      String
+  clave     String   @unique
+  status    String
+  xml       String?
+  response  String?
+  createdAt DateTime @default(now())
+
+  company Company @relation(fields: [companyId], references: [id])
+}
