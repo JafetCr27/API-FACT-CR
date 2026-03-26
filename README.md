@@ -12,7 +12,7 @@ Estructura
 
 src/
 │
-├── app.js
+|-- app.js
 ├── server.js
 │
 ├── config/
