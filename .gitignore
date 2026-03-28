@@ -1,5 +1,88 @@
-node_modules
-# Keep environment variables out of version control
-.env
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-/src/generated/prisma
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Build / dist
+# =========================
+dist/
+build/
+coverage/
+
+# =========================
+# Prisma
+# =========================
+prisma/migrations/
+# ⚠️ opcional: si quieres versionar migraciones, comenta esta línea
+
+# =========================
+# Certificados (CRÍTICO 🔥)
+# =========================
+cert/
+*.p12
+*.pfx
+*.key
+*.crt
+*.pem
+
+# =========================
+# Secrets / Keys
+# =========================
+*.secret
+*.env.local
+
+# =========================
+# Docker
+# =========================
+docker-data/
+*.tar
+
+# =========================
+# Temp files
+# =========================
+tmp/
+temp/
+
+# =========================
+# Backups
+# =========================
+*.bak
+*.backup
+
+# =========================
+# Misc
+# =========================
+*.zip
+*.rar
