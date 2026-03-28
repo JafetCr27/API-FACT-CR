@@ -19,7 +19,8 @@
     "fs": "^0.0.1-security",
     "node-forge": "^1.4.0",
     "prisma": "^5.22.0",
-    "xml-crypto": "^6.1.2"
+    "xml-crypto": "^6.1.2",
+    "xmlbuilder2": "^4.0.3"
   },
   "devDependencies": {
     "@types/node": "^25.5.0"
