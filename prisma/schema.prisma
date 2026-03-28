@@ -1,3 +1,12 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
 model Company {
   id                String   @id @default(uuid())
   name              String
@@ -7,7 +16,7 @@ model Company {
   haciendaPassword  String
   certPath          String
   certPassword      String
-  environment       String   // sandbox | production
+  environment       String
   createdAt         DateTime @default(now())
 
   documents         Document[]
