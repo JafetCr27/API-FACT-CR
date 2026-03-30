@@ -1,7 +1,6 @@
 # API-FACT-CR
 
 🧱 🏗️ 1. Stack del proyecto
-
 Node.js
 Express.js
 PostgreSQL
