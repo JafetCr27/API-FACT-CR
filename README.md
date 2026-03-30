@@ -15,8 +15,11 @@ Roadmap recomendado (paso a paso)
 Fase 1 (MVP)
 
  Endpoint factura
+
  XML básico
+ 
  Firma
+ 
  Envío sandbox
 
  
