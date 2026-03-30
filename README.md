@@ -24,14 +24,23 @@ Fase 1 (MVP)
 
  
 Fase 2
+
  Multiempresa
+ 
  Base de datos
+ 
  API keys
+
 Fase 3
+
  Notas crédito/débito
+ 
  Consulta estado
+ 
  Reintentos
+ 
 Fase 4 (PRO)
+
  Colas
  Logs
  Dashboard
