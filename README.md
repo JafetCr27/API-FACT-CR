@@ -1,6 +1,7 @@
 # API-FACT-CR
 
 🧱 🏗️ 1. Stack del proyecto
+
 Node.js
 Express.js
 PostgreSQL
@@ -12,7 +13,6 @@ Roadmap recomendado (paso a paso)
 
 
 Fase 1 (MVP)
-
 
 Endpoint factura
 
