@@ -13,15 +13,6 @@ const register = async ({ name, email, password, companyId, role }) => {
   }
 
   const passwordHash = await bcrypt.hash(password, 10);
-
-  // const company = await prisma.company.findUnique({
-  //   where: { id: companyId }
-  // });
-
-  // if (!company) {
-  //   throw new Error("Company not found");
-  // }
-  
   const user = await prisma.user.create({
     data: {
       name,
@@ -36,7 +27,12 @@ const register = async ({ name, email, password, companyId, role }) => {
     }
   });
 
-  return user;
+  return {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    status: user.status
+  };
 };
 
 const login = async ({ email, password }) => {

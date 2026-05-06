@@ -13,7 +13,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql
+       - postgres_data:/var/lib/postgresql/data
 
   api:
     build: .
@@ -21,12 +21,15 @@ services:
     restart: always
     ports:
       - "3000:3000"
+      - "5555:5555"
     depends_on:
       - postgres
     environment:
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/facturacion
       PORT: 3000
       HACIENDA_CLIENT_ID: api-stag
+      JWT_SECRET: super_secret_key
+      JWT_EXPIRES_IN: 8h
     command: sh -c "npx prisma migrate deploy && npm run dev"
 
 volumes:
