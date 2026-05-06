@@ -8,29 +8,60 @@ datasource db {
 }
 
 model Company {
-  id              String    @id @default(uuid())
-  name            String
-  identification  String    @unique
-  apiKey          String @unique
-  haciendaUser    String
-  haciendaPassword String
-  certPath        String
-  certPassword    String
-  environment     String
+  id               String   @id @default(uuid())
+  name             String
+  identification   String   @unique
+  apiKey           String   @unique
 
-  documents       Document[]  // ✅ relación
+  haciendaUser     String
+  haciendaPassword String
+
+  certPath         String
+  certPassword     String
+
+  environment      String
+
+  createdAt        DateTime @default(now())
+
+  documents        Document[]
+  users            UserCompany[]
 }
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  status       String   @default("active")
+  createdAt    DateTime @default(now())
+
+  companies    UserCompany[]
+}
+model UserCompany {
+  id         String  @id @default(uuid())
+  userId     String
+  companyId  String
+  role       String  // admin, contador, facturador
+
+  user       User    @relation(fields: [userId], references: [id])
+  company    Company @relation(fields: [companyId], references: [id])
+
+  @@unique([userId, companyId])
+}
+
 model Document {
   id          String   @id @default(uuid())
   companyId   String
   type        String
-  clave       String
+  clave       String?
   status      String
   xml         String
-  xmlFirmado  String
-  response    String
+  xmlFirmado  String?
+  response    String?
+
+  total       Float?
+  receptor    String?
+
   createdAt   DateTime @default(now())
 
-  // 🔥 RELACIÓN INVERSA (OBLIGATORIA)
-  company     Company @relation(fields: [companyId], references: [id])
+  company     Company  @relation(fields: [companyId], references: [id])
 }
