@@ -10,6 +10,7 @@ datasource db {
 model Company {
   id               String   @id @default(uuid())
   name             String
+  commercialName   String   
   identification   String   @unique
   apiKey           String   @unique
 
@@ -20,6 +21,18 @@ model Company {
   certPassword     String
 
   environment      String
+
+  activityCode     String
+  phoneCountryCode String?
+  phone            String?
+  email            String
+
+  province         String
+  canton           String
+  district         String
+  otherSigns       String
+
+  identificationType String
 
   createdAt        DateTime @default(now())
 
@@ -49,19 +62,97 @@ model UserCompany {
 }
 
 model Document {
-  id          String   @id @default(uuid())
-  companyId   String
-  type        String
-  clave       String?
-  status      String
-  xml         String
-  xmlFirmado  String?
-  response    String?
 
-  total       Float?
-  receptor    String?
+  id                             String   @id @default(uuid())
 
-  createdAt   DateTime @default(now())
+  companyId                      String
 
-  company     Company  @relation(fields: [companyId], references: [id])
+  type                           String
+
+  clave                          String?  @unique
+
+  consecutivo                    String?  @unique
+
+  receptorNombre                 String
+
+  receptorIdentificacion         String
+
+  receptorEmail                  String?
+
+  receptorIdentificationType     String
+
+  saleCondition                  String
+
+  paymentMethod                  String
+
+  currency                       String   @default("CRC")
+
+  exchangeRate                   Float?  @default(1)
+
+  subtotal                       Float    @default(0)
+
+  tax                            Float    @default(0)
+
+  total                          Float    @default(0)
+
+  status                         String   @default("draft")
+
+  xml                            String?
+
+  xmlSigned                      String?
+
+  haciendaResponse               String?
+
+  createdAt                      DateTime @default(now())
+
+  updatedAt                      DateTime @updatedAt
+
+  company                        Company @relation(fields: [companyId], references: [id])
+
+  lines                          DocumentLine[]
+
+  @@index([companyId])
+
+  @@index([status])
+
+  @@index([createdAt])
+}
+
+model DocumentLine {
+
+  id               String   @id @default(uuid())
+
+  documentId       String
+
+  lineNumber       Int
+
+  codeType         String?
+
+  codigo           String?
+
+  descripcion      String
+
+  cantidad         Float
+
+  unidadMedida     String   @default("Unid")
+
+  precioUnitario   Float
+
+  subtotal         Float
+
+  taxCode          String?
+
+  taxRateCode      String?
+
+  taxRate          Float?
+
+  impuesto         Float    @default(0)
+
+  totalLinea       Float
+
+  createdAt        DateTime @default(now())
+
+  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
 }
